@@ -50,13 +50,12 @@ export class AppComponent {
 
     if (isIOS) {
       topmost().ios.controller.navigationBar.barStyle = 1;
+      this.nativeLabel = new UILabel(CGRectMake(10, 30, 200, 60));
+      this.nativeLabel.textColor = new Color('#555').ios;
+      this.nativeLabel.textAlignment = NSTextAlignmentCenter;
+      this.nativeLabel.text = 'Presents, Family, Toys, Presents, Family, Toys';
     }
-    console.log(screen.mainScreen.widthDIPs);
 
-    this.nativeLabel = new UILabel(CGRectMake(10, 30, 200, 60));
-    this.nativeLabel.textColor = new Color('#555').ios;
-    this.nativeLabel.textAlignment = NSTextAlignmentCenter;
-    this.nativeLabel.text = 'Presents, Family, Toys, Presents, Family, Toys';
   }
 
   public viewEgghead(isCourse?: boolean) {
@@ -125,18 +124,20 @@ export class AppComponent {
         if (this.total === 0) {
           // dialogs.alert('yo!');
           this.offerOn = true;
-          this.confettiView = new ConfettiView();
-          this.confettiView.colors([
-            new Color('#A32C28').ios,
-            new Color('#384030').ios,
-            new Color('#7B8055').ios,
-            new Color('#1C090B').ios,
-            new Color('#fff').ios
-          ]);
-          this.confettiView.intensity(30.0);
+          if (isIOS) {
+            this.confettiView = new ConfettiView();
+            this.confettiView.colors([
+              new Color('#A32C28').ios,
+              new Color('#384030').ios,
+              new Color('#7B8055').ios,
+              new Color('#1C090B').ios,
+              new Color('#fff').ios
+            ]);
+            this.confettiView.intensity(30.0);
 
-          // this.confettiView.type = SAConfettiView.ConfettiType.image((<any>UIImage).tns_safeImageNamed(`~/img/santa.png`));
-          this.confettiView.startConfetti();
+            // this.confettiView.type = SAConfettiView.ConfettiType.image((<any>UIImage).tns_safeImageNamed(`~/img/santa.png`));
+            this.confettiView.startConfetti();
+          }
         }
       }
     }
@@ -149,22 +150,13 @@ export class AppComponent {
   ngAfterViewInit() {
     let shimmer = this.shimmerView.nativeElement;
     if (isIOS) {
-      console.log('shimmer.ios.contentView...');
-      console.log(shimmer.ios.contentView);
       shimmer.ios.contentView = this.nativeLabel;
-      console.log(shimmer.ios.shimmering);
     }
   }
 
   public creatingView(e: any) {
     if (isIOS) {
-      
-      // console.log(e.object); // Placeholder(8)
-      // console.log(e.view); // undefined
       e.view = this.nativeLabel;
-      console.log('created native uilabel...');
-      console.log(e.view); //<UILabel: 0x7a942e60; frame = (0 0; 200 60); text = 'Native';     userInteractionEnabled = NO; layer = <_UILabelLayer: 0x7a9438a0>>`
-
     }
   }
 }

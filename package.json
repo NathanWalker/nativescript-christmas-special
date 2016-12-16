@@ -20,6 +20,7 @@
     "@angular/router": "3.2.2",
     "confetti": "file:confetti",
     "nativescript-angular": "next",
+    "nativescript-loading-indicator": "^2.2.2",
     "nativescript-shimmer": "^1.0.2",
     "nativescript-theme-core": "^1.0.1",
     "reflect-metadata": "~0.1.8",
