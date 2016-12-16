@@ -1,0 +1,32 @@
+<ActionBar title="Merry Christmas" class="action-bar">
+    <ActionItem *ngIf="offerOn">
+        <Image src="~/img/santa.png" class="action-image" width="30" height="30"></Image>
+    </ActionItem>
+</ActionBar>
+<StackLayout>
+    <StackLayout class="bar">
+        <Shimmer class="m-y-auto" #shimmerView>
+            <Placeholder *ngIf="initShimmerLabel" (creatingView)="creatingView($event)"></Placeholder>
+            <!--<Label text="Presents, Family, Toys, Presents, Family, Toys" class="banner m-y-auto text-center"></Label>-->
+        </Shimmer>
+    </StackLayout>
+    <StackLayout class="top p-20">
+        <Label text="Wishing you the happiest of holidays!" class="h1 text-center text-primary" textWrap="true"></Label>
+        <Label [text]="swipesLeft" class="text-center swipes-left" *ngIf="!offerOn"></Label>
+        
+        <Button text="Get a year of egghead.io for $139!" (tap)="viewEgghead()" class="btn btn-primary btn-active offer-btn" [ngClass]="{on: offerOn}" *ngIf="offerOn"></Button>
+    </StackLayout>
+    <StackLayout class="vintage p-20">
+        <StackLayout height="90" *ngIf="!offerOn"></StackLayout>
+        <Label text="Enjoy learning about NativeScript for Angular during your time off :)" class="h2 text-center" textWrap="true" *ngIf="offerOn"></Label>
+        <Label text="View Course Details" (tap)="viewEgghead(true)" class="h2 text-center text-primary" *ngIf="offerOn"></Label>
+    </StackLayout>
+    <AbsoluteLayout (swipe)="onSwipe($event)" class="vintage h-full">
+        <Image [src]="activeTree.src" stretch="fill" height="320" class="tree1" [ngClass]="{out: activeTree.out, in: activeTree.in}" #tree1></Image>
+        <Image [src]="nextTree.src" stretch="fill" height="320" class="tree2" [ngClass]="{out: nextTree.out, in: nextTree.in}" #tree2></Image>
+
+        <Image src="~/img/downhand.png" stretch="fill" height="250" class="downhand" *ngIf="!offerOn"></Image>
+
+    </AbsoluteLayout>
+
+</StackLayout>

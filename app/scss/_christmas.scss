@@ -1,0 +1,111 @@
+// We will base our custom theme off the core theme's light variables
+@import 'nativescript-theme-core/scss/light';
+
+// We can now override all the core variables found here:
+// https://github.com/NativeScript/theme/blob/master/app/scss/_variables.scss
+$primary: #A32C28;
+$accent: #384030;
+$secondary: #7B8055;
+
+// ActionBar
+$ab-background: $primary;
+$ab-color: #fff;
+
+// Buttons
+$btn-color: $accent;
+$btn-color-secondary: darken($accent, 5%);
+
+// My custom variables 
+// You could also import from a separate file
+$christmas-alt: #1C090B;
+$christmas-vintage: #BCA875;
+
+// Import the theme’s main ruleset
+// core class definitions which will use the variables above :)
+@import 'nativescript-theme-core/scss/index';
+
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the majority of your custom CSS will go.
+.top {
+  background-color: $secondary;
+  height:175;
+}
+.bar {
+  background-color: $christmas-alt;
+  height: 30;
+  padding-top: 4;
+}
+.vintage {
+  background-color: $christmas-vintage;
+}
+.banner {
+  padding-top: 4;
+  color: lighten($christmas-alt, 12%);
+  vertical-align: center;
+}
+.tree1,
+.tree2 {
+
+  &.out {
+    animation-name: flyOut;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+
+  &.in {
+    animation-name: flyIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+}
+.tree1 {
+  transform: translate3d(75, 0, 0);
+}
+.tree2 {
+  transform: translate3d(75, 500, 0);
+} 
+.downhand {
+  animation-name: downHand;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+.swipes-left {
+  color: #fff;
+  font-size: 26;
+  margin-top: 10;
+}
+.offer-btn {
+  opacity: 0;
+  transform: scale(.5, .5);
+
+  &.on {
+    animation-name: offerOn;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: spring;
+  }
+}
+
+@keyframes offerOn {
+	from { transform: scale(.5,.5); opacity:0; }
+	to { transform: scale(1,1); opacity:1; }
+}
+
+@keyframes flyIn {
+	from { transform: translate3d(75, 300, 0); opacity:0; }
+	to { transform: translate3d(75, 0, 0); opacity:1; }
+}
+
+@keyframes flyOut {
+	from { transform: translate3d(75, 0, 0); opacity:1; }
+	to { transform: translate3d(75, 300, 0); opacity:0; }
+}
+
+@keyframes downHand {
+	0% { transform: translate3d(5, 100, 0); opacity:0; }
+	30% { transform: translate3d(5, 30, 0); opacity:1; }
+  50% { transform: translate3d(5, 150, 0); opacity:1; }
+  100% { transform: translate3d(5, 400, 0); opacity:0; }
+}

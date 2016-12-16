@@ -1,0 +1,11 @@
+{
+ "name": "confetti",
+ "version": "1.0.0",
+ "description": "Awesome confetti",
+ "main": "confetti.js",
+ "nativescript": {
+   "platforms": {
+     "ios": "2.4.0"
+   	}
+	}
+}

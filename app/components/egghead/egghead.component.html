@@ -1,0 +1,10 @@
+<StackLayout>
+  <GridLayout rows="auto" columns="75,*,75" class="action-bar p-x-5 p-y-10">
+      <Button text="Close" (tap)="close()" class="action-item" row="0" col="0"></Button>
+      <Label [text]="title" class="action-bar-title text-center" row="0" col="1"></Label>
+      
+  </GridLayout>
+  <StackLayout>
+      <WebView [src]="url" width="100%" height="100%"></WebView>
+  </StackLayout>
+</StackLayout>
