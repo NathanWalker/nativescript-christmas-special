@@ -16,7 +16,7 @@ export class EggheadComponent implements OnInit {
 
     if (params.context.isCourse) {
       this.title = 'NativeScript for Angular';
-      this.url = 'https://egghead.io/courses/create-native-apps-with-angular-native';
+      this.url = 'http://bit.ly/2gRnRl0';
     }
 
     this._loader = new LoadingIndicator();
